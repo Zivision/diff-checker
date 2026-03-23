@@ -3,6 +3,8 @@ import sys
 import tomllib
 import re
 
+from src.git import git_run
+
 
 # Default path for config file
 def set_path(path: str = "~/.config/diff-checker") -> str | None:
@@ -38,9 +40,7 @@ def load_conf(path: str) -> dict[str, dict[str, str]]:
 
 def parse_conf(conf: dict[str, dict[str, str]]):
     for key in conf.keys():
-        if "git_project" in conf[key]:
+        if "git_url" in conf[key]:
+            git_run(conf[key])
+        if "flake_path" in conf[key]:
             print(key)
-            print("Bing")
-        if "flake_project" in conf[key]:
-            print(key)
-            print("Bong")
