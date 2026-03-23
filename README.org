@@ -1,0 +1,8 @@
+#+title: Diff Checker
+
+This is a tool for helping me check latest upstream changes with what's on my machine.
+
+*  Main Focus
+This will mainly analyze my nix flakes and my doom version and open the diffs for both.
+This will output to the browser and eventually emacs via magit.
+Support through other interfaces might come
