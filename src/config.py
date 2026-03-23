@@ -1,5 +1,6 @@
 import os
 import sys
+import tomllib
 
 
 # Default path for config file
@@ -20,3 +21,15 @@ def set_path(path: str = "~/.config/diff-checker") -> str | None:
             sys.exit(0)
         else:
             print("Invalid input!")
+
+
+def load_conf(path: str) -> dict[str, dict[str, str]]:
+
+    conf_path = path + "/conf.toml"
+    # Check if file exists
+    if not os.path.exists(conf_path):
+        raise FileNotFoundError(
+            f"conf.toml not found at: '{path}' file does not exist."
+        )
+    with open(conf_path, "rb") as f:
+        return tomllib.load(f)
